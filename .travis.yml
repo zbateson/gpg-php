@@ -15,7 +15,7 @@ matrix:
         - php: nightly
 
 before_install:
-    - chmod -R 0700 ./tests/_data/keyring
+    - pecl install gnupg
 
 install:
     - composer update
