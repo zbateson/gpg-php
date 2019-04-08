@@ -1,0 +1,30 @@
+{
+    "name": "zbateson/gpg-php",
+    "description": "Implementation of zbateson/gpg-interface using pecl/gnupg",
+    "type": "library",
+    "license": "BSD-2-Clause",
+    "authors": [
+        {
+            "name": "Zaahid Bateson"
+        }
+    ],
+    "require": {
+        "php": ">=5.4",
+        "ext-gnupg": "*",
+        "guzzlehttp/psr7": "^1.0",
+        "zbateson/gpg-interface": "dev-master"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^4.8 || ^5.7 || ^6.5"
+    },
+    "autoload": {
+        "psr-4": {
+            "ZBateson\\GpgPhp\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "ZBateson\\GpgPhp\\": "tests/GpgPhp"
+        }
+    }
+}
