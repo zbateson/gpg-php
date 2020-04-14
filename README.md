@@ -1,5 +1,5 @@
 # gpg-php
-Implementation of [zbateson/gpg-interface](https://github.com/zbateson/gpg-interface) using [pecl/gnupg](https://github.com/php-gnupg/php-gnupg).  This library is intended for use with [zbateson/mail-mime-parser](https://github.com/zbateson/mail-mime-parser) to integrate encryption, decryption, signing, or verification with the mail-mime-parser library.
+Implementation of [zbateson/crypt-interface](https://github.com/zbateson/crypt-interface) using [pecl/gnupg](https://github.com/php-gnupg/php-gnupg).  This library is intended for use with [zbateson/mail-mime-parser](https://github.com/zbateson/mail-mime-parser) to integrate encryption, decryption, signing, or verification with the mail-mime-parser library.
 
 The library isn't intended to abstract gnupg functions, and so its expected that any required setup is performed using the gnupg APIs directly.  [Click here for the gnupg documentation](https://www.php.net/manual/en/book.gnupg.php).
 
@@ -34,4 +34,4 @@ $gpgPhp = new GpgPhp($res);
 
 ## License
 
-BSD licensed - please see [license agreement](https://github.com/zbateson/gpg-interface/blob/master/LICENSE).
+BSD licensed - please see [license agreement](https://github.com/zbateson/crypt-interface/blob/master/LICENSE).

@@ -9,14 +9,14 @@ namespace ZBateson\GpgPhp;
 use Exception;
 use GuzzleHttp\Psr7;
 use Psr\Http\Message\StreamInterface;
-use ZBateson\GpgInterface\AbstractGpg;
+use ZBateson\CryptInterface\AbstractCrypt;
 
 /**
- * Implementation of GpgInterface using pecl/gnupg
+ * Implementation of ICrypt using pecl/gnupg
  *
  * @author Zaahid Bateson
  */
-class GpgPhp extends AbstractGpg
+class GpgPhp extends AbstractCrypt
 {
     /**
      * @var resource gnupg init resource handle
@@ -85,5 +85,19 @@ class GpgPhp extends AbstractGpg
     protected function verifyStream(StreamInterface $in, $signature)
     {
         return (\gnupg_verify($this->gpg, $in->getContents(), $signature) !== false);
+    }
+
+    /**
+     * Returns true for:
+     *  - application/(x-)?pgp-encrypted (if version equals the string
+     *    'Version: 1')
+     *  - application/(x-)?pgp-signature
+     */
+    public function isSupported($mimeType, $version = null)
+    {
+        if (preg_match('/^application\/(x-)?pgp-encrypted$/', $mimeType)) {
+            return (strcasecmp('Version: 1', trim($version)) === 0);
+        }
+        return (bool) preg_match('/^application\/(x-)?pgp-signature$/', $mimeType);
     }
 }
